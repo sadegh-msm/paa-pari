@@ -4,13 +4,26 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.io.*;
 
+/**
+ * Sign up is used to sign up a client .
+ */
 public class SignUp {
     private Account user;
 
+    /**
+     * Instantiates a new instance
+     *
+     * @param user the user
+     */
     public SignUp(Account user) {
         this.user = new Account();
     }
 
+    /**
+     * Gets full name.
+     *
+     * @param filename the filename
+     */
     public void getFullName(String filename) {
         Scanner scanner = new Scanner(System.in);
         String f_name = scanner.nextLine();
@@ -33,12 +46,17 @@ public class SignUp {
 
     }
 
+    /**
+     * Creat user name for the client.
+     *
+     * @param filename the filename
+     */
     public void creatUserName(String filename) {
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
         user.setUsername(username);
         if (isRepeated(username, filename)) {
-            System.out.println("Repeated");
+            System.out.println("This user name is not valid");
             creatUserName(filename);
         } else {
             try {
@@ -51,12 +69,17 @@ public class SignUp {
         }
     }
 
+    /**
+     * Create password for account.
+     *
+     * @param filename the filename
+     */
     public void createPassword(String filename) {
         Scanner scanner = new Scanner(System.in);
         String pass = scanner.nextLine();
         user.setPassword(pass);
         if (isRepeated(pass,filename)) {
-            System.out.println("Repeated");
+            System.out.println("This user name is not valid");
             createPassword(filename);
         } else {
             try {
@@ -69,6 +92,11 @@ public class SignUp {
         }
     }
 
+    /**
+     * Write biography for account.
+     *
+     * @param filename the filename
+     */
     public void writeBio(String filename) {
         Scanner scanner = new Scanner(System.in);
         String bio = scanner.nextLine();
@@ -87,6 +115,11 @@ public class SignUp {
         }
     }
 
+    /**
+     * Date of birth.
+     *
+     * @param filename the filename
+     */
     public void dateOfBirth(String filename) {
         Scanner scanner = new Scanner(System.in);
         String date = scanner.nextLine();
@@ -100,6 +133,11 @@ public class SignUp {
         }
     }
 
+    /**
+     * Date of joining paa-pari.
+     *
+     * @param filename the filename
+     */
     public void dateOfJoin(String filename) {
         try {
             FileWriter fileWriter = new FileWriter(filename);

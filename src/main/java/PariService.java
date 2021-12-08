@@ -7,14 +7,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * The type Pari service.
+ */
 public class PariService extends Pari {
     private ArrayList<Pari> paries;
 
+    /**
+     * Instantiates a new Pari service.
+     */
     public PariService() {
         paries = new ArrayList<>();
     }
 
-    public void writeTweet(String filename) {
+    /**
+     * Write a new pari.
+     *
+     * @param filename the filename
+     */
+    public void writePari(String filename) {
         Pari pari = new Pari();
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
@@ -23,7 +34,13 @@ public class PariService extends Pari {
         writeToFile(paries, paries.indexOf(pari), true,filename);
     }
 
-    public void removeTweet(String filename, int index) {
+    /**
+     * Remove a Pari.
+     *
+     * @param filename the filename
+     * @param index    the index
+     */
+    public void removePari(String filename, int index) {
         Iterator<Pari> iterator = paries.iterator();
         while (iterator.hasNext()) {
             if (correctIndex(index)) {
@@ -31,11 +48,19 @@ public class PariService extends Pari {
                 writeToFile(paries, index, false,filename);
             } else {
                 System.out.println("Wrong index");
-                removeTweet(filename, index);
+                removePari(filename, index);
             }
         }
     }
 
+    /**
+     * Writes the pari to file.
+     *
+     * @param messages the messages
+     * @param index    the index
+     * @param bool     the bool
+     * @param filename the filename
+     */
     public void writeToFile(ArrayList<Pari> messages, int index, boolean bool, String filename) {
         try {
             FileWriter fileWriter = new FileWriter(filename, bool);
@@ -54,6 +79,12 @@ public class PariService extends Pari {
     }
 
 
+    /**
+     * checks if the index is true or not.
+     *
+     * @param index the index
+     * @return the boolean
+     */
     public boolean correctIndex(int index) {
         if (index < paries.size()) {
             System.out.println("Out of Bound");

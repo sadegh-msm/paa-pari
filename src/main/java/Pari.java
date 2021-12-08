@@ -2,28 +2,54 @@ package src.main.java;
 
 import java.time.LocalDate;
 
+/**
+ * The type Pari.
+ */
 public class Pari {
     private Account user;
     private int likes;
     private String content;
     private LocalDate localDate;
 
+    /**
+     * Instantiates a new Pari.
+     */
     public Pari(){
         user = new Account();
     }
 
+    /**
+     * Gets likes for that pari.
+     *
+     * @return the likes
+     */
     public int getLikes() {
         return likes;
     }
 
+    /**
+     * Sets likes for the pari.
+     *
+     * @param likes the likes
+     */
     public void setLikes(int likes) {
         this.likes = likes;
     }
 
+    /**
+     * Gets content for the pari.
+     *
+     * @return the content
+     */
     public String getContent() {
         return content;
     }
 
+    /**
+     * Sets content for pari.
+     *
+     * @param content the content
+     */
     public void setContent(String content) {
         if(content.length() <= 256){
             this.content = content;
@@ -34,10 +60,18 @@ public class Pari {
 
     }
 
+    /**
+     * Gets local date to get when pari is created.
+     *
+     * @return the local date
+     */
     public LocalDate getLocalDate() {
         return localDate;
     }
 
+    /**
+     * Sets local date to set when pari is created.
+     */
     public void setLocalDate() {
         this.localDate = LocalDate.now();
     }

@@ -6,6 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.LocalDate;
 
+/**
+ * The type Account creates an account for client and saves the information from client
+ */
 public class Account {
     private String firstName;
     private String lastName;
@@ -16,42 +19,91 @@ public class Account {
     private String biography;
 
 
-
+    /**
+     * Instantiates a new Account.
+     */
     public Account() {
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets username.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets username.
+     *
+     * @param username the username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Get sha byte for accounts password .
+     *
+     * @param pass the pass
+     * @return the byte [ ]
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     */
     public static byte[] getSHA(String pass) throws NoSuchAlgorithmException {
         // // Static getInstance method is called with hashing SHA
         MessageDigest messageDigest = MessageDigest.getInstance("SHA_256");
@@ -61,6 +113,12 @@ public class Account {
         return messageDigest.digest(pass.getBytes(StandardCharsets.UTF_8));
     }
 
+    /**
+     * convert hash to hex string for account password
+     *
+     * @param hash the hash
+     * @return the string
+     */
     public static String toHexString(byte[] hash) {
         // Convert byte array into signum representation
         BigInteger num = new BigInteger(1, hash);
@@ -76,6 +134,12 @@ public class Account {
         return hexString.toString();
     }
 
+    /**
+     * Hash string.
+     *
+     * @param password the password
+     * @return the string
+     */
     public String hash(String password) {
         String s = null;
         try {
@@ -86,26 +150,54 @@ public class Account {
         return s;
     }
 
+    /**
+     * Gets date of birth.
+     *
+     * @return the date of birth
+     */
     public String getDateOfBirth() {
         return DateOfBirth;
     }
 
+    /**
+     * Sets date of birth.
+     *
+     * @param dateOfBirth the date of birth
+     */
     public void setDateOfBirth(String dateOfBirth) {
         DateOfBirth = dateOfBirth;
     }
 
+    /**
+     * Gets date of join.
+     *
+     * @return the date of join
+     */
     public LocalDate getDateOfJoin() {
         return DateOfJoin;
     }
 
+    /**
+     * Sets date of join.
+     */
     public void setDateOfJoin() {
         DateOfJoin = LocalDate.now();
     }
 
+    /**
+     * Gets biography.
+     *
+     * @return the biography
+     */
     public String getBiography() {
         return biography;
     }
 
+    /**
+     * Sets biography.
+     *
+     * @param biography the biography
+     */
     public void setBiography(String biography) {
         if (biography.length() <= 256) {
             this.biography = biography;
