@@ -9,7 +9,7 @@ import java.util.Scanner;
  * signIn class for singing in a client to his account
  */
 public class SignIn {
-    private final Account user;
+    private Account user;
 
     /**
      * constructor
@@ -30,6 +30,7 @@ public class SignIn {
         Scanner scanner = new Scanner(System.in);
         String pass = scanner.nextLine();
         String username = scanner.nextLine();
+
         if (isCorrect(username, filename)) {
             if (isCorrect(pass, filename)) {
                 System.out.println("Signed in");
