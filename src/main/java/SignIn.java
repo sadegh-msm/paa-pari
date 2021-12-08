@@ -26,10 +26,11 @@ public class SignIn {
      * @param filename the filename
      */
     public void check(String filename) {
-        System.out.println("Enter your password and username :");
         Scanner scanner = new Scanner(System.in);
-        String pass = scanner.nextLine();
+        System.out.println("enter your user name");
         String username = scanner.nextLine();
+        System.out.println("enter your password");
+        String pass = scanner.nextLine();
 
         if (isCorrect(username, filename)) {
             if (isCorrect(pass, filename)) {
@@ -55,6 +56,7 @@ public class SignIn {
         try {
             FileReader fileReader = new FileReader(filename);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+
             while ((string = bufferedReader.readLine()) != null) {
                 if (string.equals(bufferedReader.readLine())) {
                     return true;

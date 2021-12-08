@@ -19,7 +19,7 @@ public class ServerApplication {
      *
      * @param port the port
      */
-    public ServerApplication(int port) {
+    private ServerApplication(int port) {
         try {
             server = new ServerSocket(port);
             System.out.println("server is up!");

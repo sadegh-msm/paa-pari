@@ -20,13 +20,15 @@ public class SignUp {
     }
 
     /**
-     * Gets full name.
+     * Gets full name of client.
      *
      * @param filename the filename
      */
     public void getFullName(String filename) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your first name");
         String f_name = scanner.nextLine();
+        System.out.println("enter your last name");
         String l_name = scanner.nextLine();
         user.setFirstName(f_name);
         user.setLastName(l_name);
@@ -43,7 +45,6 @@ public class SignUp {
                 e.printStackTrace();
             }
         }
-
     }
 
     /**
@@ -53,8 +54,10 @@ public class SignUp {
      */
     public void creatUserName(String filename) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your user name (it have to be unique)");
         String username = scanner.nextLine();
         user.setUsername(username);
+
         if (isRepeated(username, filename)) {
             System.out.println("This user name is not valid");
             creatUserName(filename);
@@ -76,8 +79,10 @@ public class SignUp {
      */
     public void createPassword(String filename) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your password");
         String pass = scanner.nextLine();
         user.setPassword(pass);
+
         if (isRepeated(pass,filename)) {
             System.out.println("This user name is not valid");
             createPassword(filename);
@@ -99,8 +104,10 @@ public class SignUp {
      */
     public void writeBio(String filename) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter yor biography");
         String bio = scanner.nextLine();
         user.setBiography(bio);
+
         if (bio.length() <= 256) {
             try {
                 FileWriter fileWriter = new FileWriter(filename);
@@ -122,8 +129,10 @@ public class SignUp {
      */
     public void dateOfBirth(String filename) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your data of birth (YY/MM/DD)");
         String date = scanner.nextLine();
         user.setDateOfBirth(date);
+
         try {
             FileWriter fileWriter = new FileWriter(filename);
             fileWriter.write(date + "\n");
@@ -141,6 +150,7 @@ public class SignUp {
     public void dateOfJoin(String filename) {
         try {
             FileWriter fileWriter = new FileWriter(filename);
+            user.setDateOfJoin();
             fileWriter.write(user.getDateOfJoin().toString() + "\n");
             fileWriter.close();
         } catch (IOException e) {
@@ -148,12 +158,19 @@ public class SignUp {
         }
     }
 
+    /**
+     * checks if a username is repeated or not
+     *
+     * @param string content
+     * @param filename name of file
+     * @return that is repeated or not
+     */
     private boolean isRepeated(String string, String filename) {
-
         try {
             FileReader fileReader = new FileReader(filename);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String str = "";
+
             while ((str = bufferedReader.readLine()) != null){
                 if(string.equals(bufferedReader.readLine())){
                     return false;

@@ -20,7 +20,7 @@ public class ClientApplication {
      * @param address the address
      * @param port    the port
      */
-    public ClientApplication(String address, int port) {
+    private ClientApplication(String address, int port) {
         try {
             socket = new Socket(address, port);
             System.out.println("connected");

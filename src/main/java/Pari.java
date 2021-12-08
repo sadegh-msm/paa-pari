@@ -53,11 +53,10 @@ public class Pari {
     public void setContent(String content) {
         if(content.length() <= 256){
             this.content = content;
-        }else {
+        } else {
             System.out.println("Your content is more than 256 characters Enter again");
             setContent(content);
         }
-
     }
 
     /**
@@ -74,5 +73,25 @@ public class Pari {
      */
     public void setLocalDate() {
         this.localDate = LocalDate.now();
+    }
+
+    /**
+     * Sets all.
+     *
+     * @param content the content
+     */
+    public void setAll(String content) {
+        setContent(content);
+        setLocalDate();
+        setLikes(0);
+    }
+
+    /**
+     * Get writer of a pari.
+     *
+     * @return the string
+     */
+    public String getWriter(){
+        return user.getUsername();
     }
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 /**
- * The type Pari service.
+ * The type Pari service used to organize paries.
  */
 public class PariService extends Pari {
     private ArrayList<Pari> paries;
@@ -28,7 +28,9 @@ public class PariService extends Pari {
     public void writePari(String filename) {
         Pari pari = new Pari();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter the content of the pari you want to post");
         String str = scanner.nextLine();
+
         pari.setContent(str);
         paries.add(pari);
         writeToFile(paries, paries.indexOf(pari), true,filename);
@@ -42,6 +44,7 @@ public class PariService extends Pari {
      */
     public void removePari(String filename, int index) {
         Iterator<Pari> iterator = paries.iterator();
+
         while (iterator.hasNext()) {
             if (correctIndex(index)) {
                 paries.remove(index);
@@ -77,7 +80,6 @@ public class PariService extends Pari {
             e.printStackTrace();
         }
     }
-
 
     /**
      * checks if the index is true or not.
