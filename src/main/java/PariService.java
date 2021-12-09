@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class PariService extends Pari {
     private ArrayList<Pari> paries;
+    public boolean isNew = false;
 
     /**
      * Instantiates a new Pari service.
@@ -34,6 +35,7 @@ public class PariService extends Pari {
         pari.setContent(str);
         paries.add(pari);
         writeToFile(paries, paries.indexOf(pari), true,filename);
+        isNew = true;
     }
 
     /**

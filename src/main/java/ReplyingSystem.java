@@ -59,13 +59,13 @@ public class ReplyingSystem extends Pari{
             System.out.println("---| " + replyParies.get(1).getContent());
             System.out.println("---| " + replyParies.get(1).getLikes() + "\t\t" + replyParies.get(1).getLocalDate());
         } else if (flag == 2){
-            System.out.println("------| " + replyParies.get(1).getWriter());
-            System.out.println("------| " + replyParies.get(1).getContent());
-            System.out.println("------| " + replyParies.get(1).getLikes() + "\t\t" + replyParies.get(1).getLocalDate());
+            System.out.println("------| " + replyParies.get(2).getWriter());
+            System.out.println("------| " + replyParies.get(2).getContent());
+            System.out.println("------| " + replyParies.get(2).getLikes() + "\t\t" + replyParies.get(2).getLocalDate());
         } else if (flag == 3){
-            System.out.println("---------| " + replyParies.get(1).getWriter());
-            System.out.println("---------| " + replyParies.get(1).getContent());
-            System.out.println("---------| " + replyParies.get(1).getLikes() + "\t\t" + replyParies.get(1).getLocalDate());
+            System.out.println("---------| " + replyParies.get(3).getWriter());
+            System.out.println("---------| " + replyParies.get(3).getContent());
+            System.out.println("---------| " + replyParies.get(3).getLikes() + "\t\t" + replyParies.get(3).getLocalDate());
         }
     }
 }

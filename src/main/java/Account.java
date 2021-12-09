@@ -1,5 +1,8 @@
 package src.main.java;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -207,5 +210,27 @@ public class Account {
         }
     }
 
-}
+    /**
+     * Is valid to check if user is valid or not.
+     *
+     * @param username the username
+     * @param fileName the file name
+     * @return the boolean
+     */
+    public boolean isValid(String username, String fileName) {
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String str = "";
 
+            while ((str = bufferedReader.readLine()) != null){
+                if(username.equals(bufferedReader.readLine())){
+                    return false;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+}
