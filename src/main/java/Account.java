@@ -12,7 +12,7 @@ import java.time.LocalDate;
 /**
  * The type Account creates an account for client and saves the information from client
  */
-public class Account {
+public class Account extends Pari{
     private String firstName;
     private String lastName;
     private String username;
