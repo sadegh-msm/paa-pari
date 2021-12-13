@@ -8,7 +8,7 @@ import java.time.LocalDate;
  */
 public class TimelineSystem extends ObserverSystem {
     private Account user;
-    private HashMap<LocalDate, Pari> par_pari = new HashMap<>();
+    private HashMap<LocalDate, String> par_pari = new HashMap<>();
 
     /**
      * Instantiates a new Timeline system.
@@ -32,9 +32,9 @@ public class TimelineSystem extends ObserverSystem {
      *
      * @param user the user
      */
-    public void displayPari(Account user, Pari tweet) {
+    public void displayPari(Account user) {
         if (isInTimeline(user)) {
-            par_pari.put(tweet.getLocalDate(), tweet);
+            par_pari.put(user.getLocalDateOfPari(), user.getContent());
             ArrayList<LocalDate> sortedDates = new ArrayList<>(par_pari.keySet());
             Collections.sort(sortedDates);
             for(LocalDate localDate : sortedDates){

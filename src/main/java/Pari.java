@@ -64,14 +64,14 @@ public class Pari {
      *
      * @return the local date
      */
-    public LocalDate getLocalDate() {
+    public LocalDate getLocalDateOfPari() {
         return localDate;
     }
 
     /**
      * Sets local date to set when pari is created.
      */
-    public void setLocalDate() {
+    public void setLocalDateOfPari() {
         this.localDate = LocalDate.now();
     }
 
@@ -82,7 +82,7 @@ public class Pari {
      */
     public void setAll(String content) {
         setContent(content);
-        setLocalDate();
+        setLocalDateOfPari();
         setLikes(0);
     }
 
