@@ -34,7 +34,9 @@ public class TimelineSystem extends ObserverSystem {
      */
     public void displayPari(Account user) {
         if (isInTimeline(user)) {
-            par_pari.put(user.getLocalDateOfPari(), user.getContent());
+            for(int i = 0; i < contents.size(); i++){
+                par_pari.put(user.allContents(contents).get(i).getLocalDateOfPari(), user.allContents(contents).get(i).getContent());
+            }
             ArrayList<LocalDate> sortedDates = new ArrayList<>(par_pari.keySet());
             Collections.sort(sortedDates);
             for(LocalDate localDate : sortedDates){
@@ -43,6 +45,5 @@ public class TimelineSystem extends ObserverSystem {
             }
         }
     }
-
 
 }
