@@ -1,6 +1,7 @@
 package src.main.java;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * The type Pari.
@@ -10,12 +11,14 @@ public class Pari {
     private int likes;
     private String content;
     private LocalDate localDate;
+    protected ArrayList<Pari> contents;
 
     /**
      * Instantiates a new Pari.
      */
-    public Pari(){
+    public Pari() {
         user = new Account();
+        contents = new ArrayList<>();
     }
 
     /**
@@ -51,12 +54,19 @@ public class Pari {
      * @param content the content
      */
     public void setContent(String content) {
-        if(content.length() <= 256){
+        if (content.length() <= 256) {
             this.content = content;
         } else {
             System.out.println("Your content is more than 256 characters Enter again");
             setContent(content);
         }
+    }
+    public ArrayList<Pari> allContents(ArrayList<Pari> messages){
+        return messages;
+    }
+
+    public void addContent(Pari content) {
+        contents.add(content);
     }
 
     /**
@@ -91,7 +101,7 @@ public class Pari {
      *
      * @return the string
      */
-    public String getWriter(){
+    public String getWriter() {
         return user.getUsername();
     }
 }
