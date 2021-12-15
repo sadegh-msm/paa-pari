@@ -2,70 +2,50 @@ package src.main.resources;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  * The Client application can connect a server on given port.
  */
 public class ClientApplication {
-    private Socket socket = null;
-    private DataInputStream input = null;
-    private DataOutputStream output = null;
 
     /**
-     * Instantiates a new Client application for connecting to server.
-     *
-     * @param address the address
-     * @param port    the port
+     * Starts a client on port 8000.
      */
-    private ClientApplication(String address, int port) {
+    public void StartClient() {
         try {
-            socket = new Socket(address, port);
-            System.out.println("connected");
+            Scanner scanner = new Scanner(System.in);
+            InetAddress ip = InetAddress.getByName("localhost");
+            Socket socket = new Socket(ip, 8000);
 
-            input = new DataInputStream(System.in);
+            DataInputStream input = new DataInputStream(socket.getInputStream());
+            DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 
-            output = new DataOutputStream(socket.getOutputStream());
-        } catch (UnknownHostException u) {
-            System.out.println(u);
-        } catch (IOException i) {
-            System.out.println(i);
-        }
+            // the following loop performs the exchange of
+            // information between client and client handler
+            while (true) {
+                System.out.println(input.readUTF());
+                String toSend = scanner.nextLine();
+                output.writeUTF(toSend);
 
-        String line = "";
-
-        while (!line.equals("Over"))
-        {
-            try
-            {
-                line = input.readLine();
-                output.writeUTF(line);
+                if (toSend.equals("Exit")) {
+                    System.out.println("Closing this connection : " + socket);
+                    socket.close();
+                    System.out.println("Connection closed");
+                    break;
+                }
+                // prints the info from server
+                String received = input.readUTF();
+                System.out.println(received);
             }
-            catch(IOException i)
-            {
-                System.out.println(i);
-            }
-        }
 
-        try
-        {
+            scanner.close();
             input.close();
             output.close();
-            socket.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
-    }
-
-    /**
-     * Run and start a client on localhost and port 8000.
-     */
-    public void run() {
-        ClientApplication clientApplication = new ClientApplication("127.0.0.1", 8000);
     }
 }
-

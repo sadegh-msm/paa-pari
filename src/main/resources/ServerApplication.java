@@ -1,7 +1,7 @@
 package src.main.resources;
 
-import java.io.BufferedInputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,49 +10,37 @@ import java.net.Socket;
  * The Server application for clients to connect to it.
  */
 public class ServerApplication {
-    private Socket socket = null;
-    private ServerSocket server = null;
-    private DataInputStream input = null;
-
     /**
-     * Instantiates a new Server application for clients to connect to it.
+     * Start server.
      *
-     * @param port the port
+     * @throws IOException the io exception
      */
-    private ServerApplication(int port) {
-        try {
-            server = new ServerSocket(port);
-            System.out.println("server is up!");
+    public void startServer() throws IOException {
+        // server is listening on port 5056
+        ServerSocket serverSocket = new ServerSocket(8000);
+        // running infinite loop for getting
+        // client request
+        while(true) {
+            Socket socket = null;
+            try {
+                // socket object to receive incoming client requests
+                socket = serverSocket.accept();
 
-            socket = server.accept();
-            System.out.println("client accepted");
+                System.out.println("A new client is connected : " + socket);
 
-            input = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+                // obtaining input and out streams
+                DataInputStream input = new DataInputStream(socket.getInputStream());
+                DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 
-            String line = "";
+                System.out.println("Assigning new thread for this client");
 
-            while (!line.equals("Over"))
-            {
-                try
-                {
-                    line = input.readUTF();
-                    System.out.println(line);
+                Thread t = new ClientHandler(socket, input, output);
 
-                }
-                catch(IOException i)
-                {
-                    System.out.println(i);
-                }
+                t.start();
+            } catch (Exception e){
+                socket.close();
+                e.printStackTrace();
             }
-        } catch (IOException i) {
-            System.out.println(i);
         }
-    }
-
-    /**
-     * Run and starts rhe server on port 8000.
-     */
-    public void run() {
-        ServerApplication serverApplication = new ServerApplication(8000);
     }
 }
