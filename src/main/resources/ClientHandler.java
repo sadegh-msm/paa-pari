@@ -8,10 +8,11 @@ import java.net.Socket;
 /**
  * The type Client handler.
  */
-public class ClientHandler extends Thread{
+public class ClientHandler extends Thread {
     private DataInputStream input;
     private DataOutputStream output;
     private Socket socket;
+    private Menu menu;
 
     /**
      * Instantiates a new Client handler.
@@ -24,6 +25,7 @@ public class ClientHandler extends Thread{
         this.socket = socket;
         this.input = input;
         this.output = output;
+         this.menu = new Menu();
     }
 
     public void run() {
@@ -46,8 +48,27 @@ public class ClientHandler extends Thread{
                 }
                 // write on output stream based on the
                 // answer from the client
+                System.out.println("What do you want to do");
                 switch (received) {
                     //client choice
+                    case "1":
+                        //sign in
+                    case "2":
+                        //sign up
+                    case "3":
+                        //Tweet
+                    case "4":
+                        //Like
+                    case "5":
+                        //Retweet
+                    case "6" :
+                        //See time line
+                    case "7":
+                        //follow
+                    case"8":
+                        //unfollow
+                    case "9":
+                        //Exit
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -56,7 +77,7 @@ public class ClientHandler extends Thread{
         try {
             this.input.close();
             this.output.close();
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
