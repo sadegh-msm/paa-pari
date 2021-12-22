@@ -1,9 +1,14 @@
 package src.main.resources;
 
+
+import src.main.java.Account;
+import src.main.java.Pari;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * The type Client handler.
@@ -13,11 +18,12 @@ public class ClientHandler extends Thread {
     private DataOutputStream output;
     private Socket socket;
     private Menu menu;
+    private Pari pari;
+    private Account account;
 
     /**
      * Instantiates a new Client handler.
-     *
-     * @param socket the socket
+     *  @param socket the socket
      * @param input  the input
      * @param output the output
      */
@@ -25,7 +31,7 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         this.input = input;
         this.output = output;
-         this.menu = new Menu();
+        this.menu = new Menu(pari, account);
     }
 
     public void run() {
@@ -55,17 +61,24 @@ public class ClientHandler extends Thread {
                         //sign in
                     case "2":
                         //sign up
+                        System.out.println("PLease enter your username and password");
+                        String username;
+                        String pass;
+                        Scanner scanner = new Scanner(System.in);
+                        username = scanner.nextLine();
+                        pass = scanner.nextLine();
+                        menu.signUp(username, pass);
                     case "3":
                         //Tweet
                     case "4":
                         //Like
                     case "5":
                         //Retweet
-                    case "6" :
+                    case "6":
                         //See time line
                     case "7":
                         //follow, unfollow
-                    case"8":
+                    case "8":
                         //Reply
                     default:
                         System.exit(0);
