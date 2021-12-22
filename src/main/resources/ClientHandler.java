@@ -64,11 +64,11 @@ public class ClientHandler extends Thread {
                     case "6" :
                         //See time line
                     case "7":
-                        //follow
+                        //follow, unfollow
                     case"8":
-                        //unfollow
-                    case "9":
-                        //Exit
+                        //Reply
+                    default:
+                        System.exit(0);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
