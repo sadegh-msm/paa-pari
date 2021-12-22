@@ -1,12 +1,14 @@
 package src.main.java;
 
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
  * The type Pari.
  */
-public class Pari {
+public class Pari{
     private Account user;
     private int likes;
     private String content;
