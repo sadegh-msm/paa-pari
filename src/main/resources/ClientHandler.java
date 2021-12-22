@@ -67,7 +67,7 @@ public class ClientHandler extends Thread {
                         menu.signIn(us, pas);
                         scanner.close();
                     case "2":
-                        //sign up
+
                         System.out.println("PLease enter your username and password");
                         String username;
                         String pass;
