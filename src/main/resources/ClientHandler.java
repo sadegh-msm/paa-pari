@@ -23,7 +23,8 @@ public class ClientHandler extends Thread {
 
     /**
      * Instantiates a new Client handler.
-     *  @param socket the socket
+     *
+     * @param socket the socket
      * @param input  the input
      * @param output the output
      */
@@ -37,7 +38,7 @@ public class ClientHandler extends Thread {
     public void run() {
         String received;
         String toReturn;
-
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
                 // Ask user what he wants
@@ -58,16 +59,22 @@ public class ClientHandler extends Thread {
                 switch (received) {
                     //client choice
                     case "1":
-                        //sign in
+                        System.out.println("Please Enter your username and password");
+                        String us, pas;
+
+                        us = scanner.nextLine();
+                        pas = scanner.nextLine();
+                        menu.signIn(us, pas);
+                        scanner.close();
                     case "2":
                         //sign up
                         System.out.println("PLease enter your username and password");
                         String username;
                         String pass;
-                        Scanner scanner = new Scanner(System.in);
                         username = scanner.nextLine();
                         pass = scanner.nextLine();
                         menu.signUp(username, pass);
+                        scanner.close();
                     case "3":
                         //Tweet
                     case "4":
