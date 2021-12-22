@@ -201,12 +201,13 @@ public class Account extends Pari{
      *
      * @param biography the biography
      */
-    public void setBiography(String biography) {
+    public boolean setBiography(String biography) {
         if (biography.length() <= 256) {
             this.biography = biography;
+            return true;
         } else {
             System.out.println("Out of Bound please enter again!");
-            setBiography(biography);
+             return false;
         }
     }
 
