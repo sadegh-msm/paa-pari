@@ -1,8 +1,7 @@
 package src.main.resources;
 
 
-import src.main.java.Account;
-import src.main.java.Pari;
+import src.main.java.*;
 
 import java.io.*;
 import java.util.Scanner;
@@ -11,20 +10,27 @@ import java.util.Scanner;
 public class Menu {
     private Pari pari;
     private Account account;
+    private PariService pariService;
+    private TimelineSystemImpl timeline;
+    private ObserverSystemImpl os;
 
-    public Menu(Pari pari, Account account) {
+    public Menu(Pari pari, Account account, PariService ps, TimelineSystemImpl timeline,
+                ObserverSystemImpl os) {
         this.pari = pari;
         this.account = account;
+        this.pariService = ps;
+        this.timeline = timeline;
+        this.os = os;
     }
 
     public void signIn(String username, String password) {
         System.out.println("Login in.......");
-        if(readFromFile(username,password)){
+        if (readFromFile(username, password)) {
             System.out.println("Logged in successfully");
-        }else{
+            timeline.displayPari(account);
+        } else {
             signIn(username, password);
         }
-
     }
 
     public void signUp(String username, String password) {
@@ -49,17 +55,35 @@ public class Menu {
         account.setDateOfBirth(date);
         account.setDateOfJoin();
         writeToFile();
+        scanner.close();
     }
 
     public void timeLine() {
-
+        for (int i = 0; i < os.getFollowedUsers().size(); i++) {
+            timeline.displayPari(os.getFollowedUsers().get(i));
+        }
     }
 
     public void Observe() {
-
+        System.out.println("1.Followers list\n2.Follow\n3.Unfollow");
+        int choice;
+        Scanner scanner = new Scanner(System.in);
+        choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                for (int i = 0; i < os.getFollowedUsers().size(); i++) {
+                    System.out.println(os.getFollowedUsers().get(i));
+                }
+            case 2:
+                os.follow(account);
+            case 3:
+                os.unfollow(account);
+        }
     }
 
     public void tweet() {
+        System.out.println("Please write your tweet");
+
     }
 
     public void reTweet() {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * The type Replying system.
  */
-public class ReplyingSystemImpl extends Pari implements ReplyingSystem{
+public class ReplyingSystemImpl extends Pari implements ReplyingSystem {
     private Account user;
     private ArrayList<Pari> replyParies;
     private String content;
@@ -26,7 +26,7 @@ public class ReplyingSystemImpl extends Pari implements ReplyingSystem{
 
     @Override
     public void setContent(String content) {
-        if (content.length() <= 256){
+        if (content.length() <= 256) {
             this.content = content;
         } else {
             System.out.println("Out of Bound please enter again!");
@@ -46,6 +46,7 @@ public class ReplyingSystemImpl extends Pari implements ReplyingSystem{
         Pari reply = new Pari();
         reply.setAll(content);
         replyParies.add(reply);
+        scanner.close();
     }
 
     /**
@@ -54,15 +55,15 @@ public class ReplyingSystemImpl extends Pari implements ReplyingSystem{
     public void printReplied() {
         int flag = replyParies.size();
 
-        if (flag == 1){
+        if (flag == 1) {
             System.out.println("---| " + replyParies.get(1).getWriter());
             System.out.println("---| " + replyParies.get(1).getContent());
             System.out.println("---| " + replyParies.get(1).getLikes() + "\t\t" + replyParies.get(1).getLocalDateOfPari());
-        } else if (flag == 2){
+        } else if (flag == 2) {
             System.out.println("------| " + replyParies.get(2).getWriter());
             System.out.println("------| " + replyParies.get(2).getContent());
             System.out.println("------| " + replyParies.get(2).getLikes() + "\t\t" + replyParies.get(2).getLocalDateOfPari());
-        } else if (flag == 3){
+        } else if (flag == 3) {
             System.out.println("---------| " + replyParies.get(3).getWriter());
             System.out.println("---------| " + replyParies.get(3).getContent());
             System.out.println("---------| " + replyParies.get(3).getLikes() + "\t\t" + replyParies.get(3).getLocalDateOfPari());

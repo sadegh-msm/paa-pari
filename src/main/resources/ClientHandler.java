@@ -1,8 +1,7 @@
 package src.main.resources;
 
 
-import src.main.java.Account;
-import src.main.java.Pari;
+import src.main.java.*;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -19,7 +18,10 @@ public class ClientHandler extends Thread {
     private Socket socket;
     private Menu menu;
     private Pari pari;
-    private Account account;
+    private Account account = new Account();
+    private PariService pariService = new PariService();
+    private TimelineSystemImpl timeline = new TimelineSystemImpl();
+    private ObserverSystemImpl os = new ObserverSystemImpl();
 
     /**
      * Instantiates a new Client handler.
@@ -32,7 +34,7 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         this.input = input;
         this.output = output;
-        this.menu = new Menu(pari, account);
+        this.menu = new Menu(pari, account,pariService,timeline,os);
     }
 
     public void run() {
