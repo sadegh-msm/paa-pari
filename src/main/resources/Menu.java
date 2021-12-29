@@ -82,7 +82,16 @@ public class Menu {
     }
 
     public void tweet() {
-        System.out.println("Please write your tweet");
+        System.out.println("1.Please write your tweet\n2.Remove your tweet");
+        int choice;
+        Scanner scanner = new Scanner(System.in);
+        choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                pari.writePari("paries");
+            case 2:
+                pari.removePari("paries",); // index ????
+        }
 
     }
 

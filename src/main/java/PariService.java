@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * The type Pari service used to organize paries.
  */
-public class PariService extends Pari {
+public class PariService {
     private ArrayList<Pari> paries;
     public boolean isNew = false;
 
@@ -31,7 +31,6 @@ public class PariService extends Pari {
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter the content of the pari you want to post");
         String str = scanner.nextLine();
-
         pari.setContent(str);
         paries.add(pari);
         writeToFile(paries, paries.indexOf(pari), true,filename);

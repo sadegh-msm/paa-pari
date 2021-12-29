@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * The type Pari.
  */
-public class Pari{
+public class Pari extends PariService{
     private Account user;
     private int likes;
     private String content;
