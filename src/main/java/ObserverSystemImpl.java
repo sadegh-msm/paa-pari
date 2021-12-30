@@ -16,6 +16,11 @@ public class ObserverSystemImpl extends Pari implements ObserverSystem {
         this.followedUsers = new ArrayList<>();
     }
 
+    /**
+     * Gets followed users.
+     *
+     * @return the followed users
+     */
     public ArrayList<Account> getFollowedUsers() {
         return followedUsers;
     }

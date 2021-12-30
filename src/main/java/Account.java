@@ -200,6 +200,7 @@ public class Account extends Pari{
      * Sets biography.
      *
      * @param biography the biography
+     * @return the biography
      */
     public boolean setBiography(String biography) {
         if (biography.length() <= 256) {

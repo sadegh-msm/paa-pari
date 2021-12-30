@@ -90,14 +90,19 @@ public class ClientHandler extends Thread {
 
                     case "4":
                         menu.likePari();
+
                     case "5":
                         menu.reTweetPari();
+
                     case "6":
                         menu.timeLine();
+
                     case "7":
                         menu.Observe();
+
                     case "8":
                         menu.reply();
+
                     default:
                         System.exit(0);
                 }

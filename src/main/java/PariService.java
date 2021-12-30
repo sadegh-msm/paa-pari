@@ -12,6 +12,9 @@ import java.util.Scanner;
  */
 public class PariService {
     private ArrayList<Pari> paries;
+    /**
+     * The Is new.
+     */
     public boolean isNew = false;
 
     /**
