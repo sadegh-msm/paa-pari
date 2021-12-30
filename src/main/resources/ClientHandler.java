@@ -1,8 +1,6 @@
 package src.main.resources;
 
-
 import src.main.java.*;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,6 +20,7 @@ public class ClientHandler extends Thread {
     private PariService pariService = new PariService();
     private TimelineSystemImpl timeline = new TimelineSystemImpl();
     private ObserverSystemImpl os = new ObserverSystemImpl();
+    private ReplyingSystemImpl rs = new ReplyingSystemImpl();
 
     /**
      * Instantiates a new Client handler.
@@ -34,7 +33,7 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         this.input = input;
         this.output = output;
-        this.menu = new Menu(pari, account,pariService,timeline,os);
+        this.menu = new Menu(pari, account, pariService, timeline, os, rs);
     }
 
     public void run() {
@@ -44,11 +43,20 @@ public class ClientHandler extends Thread {
         while (true) {
             try {
                 // Ask user what he wants
-                output.writeUTF("");
+                output.writeUTF("what do you want to do?" +
+                        "1. sing in" +
+                        "2. sing up" +
+                        "3. tweets" +
+                        "4. likes" +
+                        "5. retweet" +
+                        "6. timeline" +
+                        "7. follow or unfollow" +
+                        "8. reply" +
+                        "type exit to close the app");
                 // receive the answer from client
                 received = input.readUTF();
 
-                if (received.equals("Exit")) {
+                if (received.equals("exit")) {
                     System.out.println("Client " + this.socket + " sends exit...");
                     System.out.println("Closing this connection.");
                     this.socket.close();
@@ -68,8 +76,8 @@ public class ClientHandler extends Thread {
                         pas = scanner.nextLine();
                         menu.signIn(us, pas);
                         scanner.close();
-                    case "2":
 
+                    case "2":
                         System.out.println("PLease enter your username and password");
                         String username;
                         String pass;
@@ -78,17 +86,18 @@ public class ClientHandler extends Thread {
                         menu.signUp(username, pass);
                         scanner.close();
                     case "3":
-                        //Tweet
+                        menu.tweet();
+
                     case "4":
-                        //Like
+                        menu.likePari();
                     case "5":
-                        //Retweet
+                        menu.reTweetPari();
                     case "6":
-                        //See time line
+                        menu.timeLine();
                     case "7":
-                        //follow, unfollow
+                        menu.Observe();
                     case "8":
-                        //Reply
+                        menu.reply();
                     default:
                         System.exit(0);
                 }

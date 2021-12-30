@@ -96,4 +96,29 @@ public class PariService {
         return true;
     }
 
+    /**
+     * Like.
+     *
+     * @param index the index
+     */
+    public void like(int index){
+        Pari pari = new Pari();
+        int likes = 0;
+        likes = likes + 1;
+        pari.setLikes(likes);
+    }
+
+    /**
+     * Retweet.
+     *
+     * @param filename    the filename
+     * @param pariContent the pari content
+     */
+    public void retweet(String filename, String pariContent) {
+        Pari pari = new Pari();
+        pari.setContent(pariContent);
+        paries.add(pari);
+        writeToFile(paries, paries.indexOf(pari), true, filename);
+        isNew = true;
+    }
 }

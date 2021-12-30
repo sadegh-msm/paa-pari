@@ -7,22 +7,43 @@ import java.io.*;
 import java.util.Scanner;
 
 
+/**
+ * The type Menu.
+ */
 public class Menu {
     private Pari pari;
     private Account account;
     private PariService pariService;
     private TimelineSystemImpl timeline;
     private ObserverSystemImpl os;
+    private ReplyingSystemImpl rs;
 
+    /**
+     * Instantiates a new Menu.
+     *
+     * @param pari     the pari
+     * @param account  the account
+     * @param ps       the ps
+     * @param timeline the timeline
+     * @param os       the os
+     * @param rs       the rs
+     */
     public Menu(Pari pari, Account account, PariService ps, TimelineSystemImpl timeline,
-                ObserverSystemImpl os) {
+                ObserverSystemImpl os, ReplyingSystemImpl rs) {
         this.pari = pari;
         this.account = account;
         this.pariService = ps;
         this.timeline = timeline;
         this.os = os;
+        this.rs = rs;
     }
 
+    /**
+     * Sign in.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void signIn(String username, String password) {
         System.out.println("Login in.......");
         if (readFromFile(username, password)) {
@@ -33,6 +54,12 @@ public class Menu {
         }
     }
 
+    /**
+     * Sign up.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void signUp(String username, String password) {
         System.out.println("Enter your First name");
         Scanner scanner = new Scanner(System.in);
@@ -58,12 +85,18 @@ public class Menu {
         scanner.close();
     }
 
+    /**
+     * Time line.
+     */
     public void timeLine() {
         for (int i = 0; i < os.getFollowedUsers().size(); i++) {
             timeline.displayPari(os.getFollowedUsers().get(i));
         }
     }
 
+    /**
+     * Observe.
+     */
     public void Observe() {
         System.out.println("1.Followers list\n2.Follow\n3.Unfollow");
         int choice;
@@ -81,6 +114,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Tweet.
+     */
     public void tweet() {
         System.out.println("1.Please write your tweet\n2.Remove your tweet");
         int choice;
@@ -88,21 +124,51 @@ public class Menu {
         choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                pari.writePari("paries");
+                pari.writePari("E:\\GitHub\\paa-pari\\files\\model\\paries\\Paries.txt");
             case 2:
-                pari.removePari("paries",); // index ????
+                System.out.println("please enter the index of pari you want to delete");
+                int index = scanner.nextInt();
+                pari.removePari("E:\\GitHub\\paa-pari\\files\\model\\paries\\Paries.txt", index);
         }
-
     }
 
-    public void reTweet() {
+    /**
+     * Like pari.
+     */
+    public void likePari(){
+        System.out.println("please enter the pari you want to like");
+        Scanner scanner = new Scanner(System.in);
+        int index = scanner.nextInt();
 
+        pariService.like(index);
+        scanner.close();
     }
 
+    /**
+     * Re tweet.
+     */
+    public void reTweetPari() {
+        System.out.println("please enter the tweet you want to retweet");
+        Scanner scanner = new Scanner(System.in);
+        int index = scanner.nextInt();
+
+        pariService.retweet("E:\\GitHub\\paa-pari\\files\\model\\users\\UsersInfo.txt", pari.getContent());
+        int retweetCount = 0;
+        retweetCount++;
+        pari.setRetweetCount(retweetCount);
+    }
+
+    /**
+     * Reply.
+     */
     public void reply() {
-
+        rs.replyOnPari(pari);
+        rs.printReplied();
     }
 
+    /**
+     * Write to file.
+     */
     public void writeToFile() {
         try {
             FileWriter fileWriter = new FileWriter("E:\\GitHub\\paa-pari\\files\\model\\users\\UsersInfo.txt");
@@ -119,6 +185,13 @@ public class Menu {
         }
     }
 
+    /**
+     * Read from file boolean.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the boolean
+     */
     public boolean readFromFile(String username, String password) {
         try {
             FileReader fileReader = new FileReader("E:\\GitHub\\paa-pari\\files\\model\\users\\UsersInfo.txt");
@@ -140,7 +213,6 @@ public class Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return true;
     }
 

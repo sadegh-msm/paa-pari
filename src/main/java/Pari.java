@@ -11,8 +11,12 @@ import java.util.ArrayList;
 public class Pari extends PariService{
     private Account user;
     private int likes;
+    private int retweetCount;
     private String content;
     private LocalDate localDate;
+    /**
+     * The Contents.
+     */
     protected ArrayList<Pari> contents;
 
     /**
@@ -63,10 +67,22 @@ public class Pari extends PariService{
             setContent(content);
         }
     }
+
+    /**
+     * All contents array list.
+     *
+     * @param messages the messages
+     * @return the array list
+     */
     public ArrayList<Pari> allContents(ArrayList<Pari> messages){
         return messages;
     }
 
+    /**
+     * Add content.
+     *
+     * @param content the content
+     */
     public void addContent(Pari content) {
         contents.add(content);
     }
@@ -105,5 +121,23 @@ public class Pari extends PariService{
      */
     public String getWriter() {
         return user.getUsername();
+    }
+
+    /**
+     * Gets retweet count.
+     *
+     * @return the retweet count
+     */
+    public int getRetweetCount() {
+        return retweetCount;
+    }
+
+    /**
+     * Sets retweet count.
+     *
+     * @param retweetCount the retweet count
+     */
+    public void setRetweetCount(int retweetCount) {
+        this.retweetCount = retweetCount;
     }
 }
