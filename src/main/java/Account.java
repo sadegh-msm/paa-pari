@@ -8,11 +8,12 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * The type Account creates an account for client and saves the information from client
  */
-public class Account extends Pari{
+public class Account {
     private String firstName;
     private String lastName;
     private String username;
@@ -20,12 +21,18 @@ public class Account extends Pari{
     private String DateOfBirth;
     private LocalDate DateOfJoin;
     private String biography;
+    private ArrayList<Pari> paris;
 
 
     /**
      * Instantiates a new Account.
      */
     public Account() {
+
+    }
+
+    public void setParis(ArrayList<Pari> paris) {
+        this.paris = paris;
     }
 
     /**
@@ -223,9 +230,8 @@ public class Account extends Pari{
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String str = "";
 
-            while ((str = bufferedReader.readLine()) != null){
+            while (bufferedReader.readLine() != null){
                 if(username.equals(bufferedReader.readLine())){
                     return false;
                 }

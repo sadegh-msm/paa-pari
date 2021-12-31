@@ -12,13 +12,13 @@ import java.util.Scanner;
 public class ClientApplication {
 
     /**
-     * Starts a client on port 8000.
+     * Starts a client on port 4000.
      */
     public void StartClient() {
         try {
             Scanner scanner = new Scanner(System.in);
             InetAddress ip = InetAddress.getByName("localhost");
-            Socket socket = new Socket(ip, 8000);
+            Socket socket = new Socket(ip, 4000);
 
             DataInputStream input = new DataInputStream(socket.getInputStream());
             DataOutputStream output = new DataOutputStream(socket.getOutputStream());

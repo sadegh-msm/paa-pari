@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class TimelineSystemImpl extends ObserverSystemImpl implements TimelineSystem {
     private Account user;
+    private Pari pari;
     private HashMap<LocalDate, String> par_pari = new HashMap<>();
 
     /**
@@ -15,6 +16,7 @@ public class TimelineSystemImpl extends ObserverSystemImpl implements TimelineSy
      */
     public TimelineSystemImpl() {
         this.user = new Account();
+        this.pari = new Pari();
     }
 
     /**
@@ -35,7 +37,7 @@ public class TimelineSystemImpl extends ObserverSystemImpl implements TimelineSy
     public void displayPari(Account user) {
         if (isInTimeline(user)) {
             for(int i = 0; i < contents.size(); i++){
-                par_pari.put(user.allContents(contents).get(i).getLocalDateOfPari(), user.allContents(contents).get(i).getContent());
+                par_pari.put(pari.getContents().get(i).getLocalDateOfPari(), pari.getContents().get(i).getContent());
             }
             ArrayList<LocalDate> sortedDates = new ArrayList<>(par_pari.keySet());
             Collections.sort(sortedDates);

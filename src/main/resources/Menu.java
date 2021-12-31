@@ -68,6 +68,8 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         us = scanner.nextLine();
         pas = scanner.nextLine();
+        System.out.println(us);
+        System.out.println(pas);
         System.out.println("Enter your First name");
         String fName = scanner.nextLine();
         account.setFirstName(fName);

@@ -17,15 +17,16 @@ public class ServerApplication {
      */
     public void startServer() throws IOException {
         // server is listening on port 5056
-        ServerSocket serverSocket = new ServerSocket(8000);
+
+        ServerSocket serverSocket = new ServerSocket(4000);
         // running infinite loop for getting
         // client request
         while(true) {
+
             Socket socket = null;
             try {
                 // socket object to receive incoming client requests
                 socket = serverSocket.accept();
-
                 System.out.println("A new client is connected : " + socket);
 
                 // obtaining input and out streams
@@ -35,7 +36,6 @@ public class ServerApplication {
                 System.out.println("Assigning new thread for this client");
 
                 Thread t = new ClientHandler(socket, input, output);
-
                 t.start();
             } catch (Exception e){
                 socket.close();

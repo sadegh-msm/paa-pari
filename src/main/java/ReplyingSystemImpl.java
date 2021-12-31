@@ -56,15 +56,15 @@ public class ReplyingSystemImpl extends Pari implements ReplyingSystem {
         int flag = replyParies.size();
 
         if (flag == 1) {
-            System.out.println("---| " + replyParies.get(1).getWriter());
+            System.out.println("---| " + replyParies.get(1) + user.getUsername());
             System.out.println("---| " + replyParies.get(1).getContent());
             System.out.println("---| " + replyParies.get(1).getLikes() + "\t\t" + replyParies.get(1).getLocalDateOfPari());
         } else if (flag == 2) {
-            System.out.println("------| " + replyParies.get(2).getWriter());
+            System.out.println("------| " + replyParies.get(2) + user.getUsername());
             System.out.println("------| " + replyParies.get(2).getContent());
             System.out.println("------| " + replyParies.get(2).getLikes() + "\t\t" + replyParies.get(2).getLocalDateOfPari());
         } else if (flag == 3) {
-            System.out.println("---------| " + replyParies.get(3).getWriter());
+            System.out.println("---------| " + replyParies.get(3) + user.getUsername());
             System.out.println("---------| " + replyParies.get(3).getContent());
             System.out.println("---------| " + replyParies.get(3).getLikes() + "\t\t" + replyParies.get(3).getLocalDateOfPari());
         }

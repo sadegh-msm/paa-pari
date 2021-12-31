@@ -5,7 +5,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
+
 
 /**
  * The type Client handler.
@@ -38,24 +38,21 @@ public class ClientHandler extends Thread {
 
     public void run() {
         String received;
-        String toReturn;
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
                 // Ask user what he wants
-                output.writeUTF("what do you want to do?" +
-                        "1. sing in" +
-                        "2. sing up" +
-                        "3. tweets" +
-                        "4. likes" +
-                        "5. retweet" +
-                        "6. timeline" +
-                        "7. follow or unfollow" +
-                        "8. reply" +
-                        "type exit to close the app");
+                output.writeUTF("what do you want to do?\n" +
+                        "1. sign in\n" +
+                        "2. sign up\n" +
+                        "3. tweets\n" +
+                        "4. likes\n" +
+                        "5. retweet\n" +
+                        "6. timeline\n" +
+                        "7. follow or unfollow\n" +
+                        "8. reply\n" +
+                        "type exit to close the app\n");
                 // receive the answer from client
                 received = input.readUTF();
-
                 if (received.equals("exit")) {
                     System.out.println("Client " + this.socket + " sends exit...");
                     System.out.println("Closing this connection.");
@@ -66,6 +63,7 @@ public class ClientHandler extends Thread {
                 // write on output stream based on the
                 // answer from the client
                 System.out.println("What do you want to do");
+                System.out.println(received);
                 switch (received) {
                     //client choice
                     case "1":

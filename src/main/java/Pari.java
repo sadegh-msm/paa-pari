@@ -3,13 +3,13 @@ package src.main.java;
 
 
 import java.time.LocalDate;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 
 /**
  * The type Pari.
  */
 public class Pari extends PariService{
-    private Account user;
     private int likes;
     private int retweetCount;
     private String content;
@@ -23,7 +23,6 @@ public class Pari extends PariService{
      * Instantiates a new Pari.
      */
     public Pari() {
-        user = new Account();
         contents = new ArrayList<>();
     }
 
@@ -70,12 +69,10 @@ public class Pari extends PariService{
 
     /**
      * All contents array list.
-     *
-     * @param messages the messages
      * @return the array list
      */
-    public ArrayList<Pari> allContents(ArrayList<Pari> messages){
-        return messages;
+    public ArrayList<Pari> getContents() {
+        return contents;
     }
 
     /**
@@ -112,15 +109,6 @@ public class Pari extends PariService{
         setContent(content);
         setLocalDateOfPari();
         setLikes(0);
-    }
-
-    /**
-     * Get writer of a pari.
-     *
-     * @return the string
-     */
-    public String getWriter() {
-        return user.getUsername();
     }
 
     /**

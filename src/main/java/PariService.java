@@ -11,6 +11,7 @@ import java.util.Scanner;
  * The type Pari service used to organize paries.
  */
 public class PariService {
+
     private ArrayList<Pari> paries;
     /**
      * The Is new.
