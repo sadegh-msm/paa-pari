@@ -41,28 +41,34 @@ public class Menu {
     /**
      * Sign in.
      *
-     * @param username the username
-     * @param password the password
      */
-    public void signIn(String username, String password) {
+    public void signIn() {
+        System.out.println("PLease enter your username and password");
+        String username;
+        String pass;
+        Scanner scanner = new Scanner(System.in);
+        username = scanner.nextLine();
+        pass = scanner.nextLine();
         System.out.println("Login in.......");
-        if (readFromFile(username, password)) {
+        if (readFromFile(username, pass)) {
             System.out.println("Logged in successfully");
             timeline.displayPari(account);
         } else {
-            signIn(username, password);
+            signIn();
         }
     }
 
     /**
      * Sign up.
      *
-     * @param username the username
-     * @param password the password
      */
-    public void signUp(String username, String password) {
-        System.out.println("Enter your First name");
+    public void signUp() {
+        System.out.println("Please Enter your username and password");
+        String us, pas;
         Scanner scanner = new Scanner(System.in);
+        us = scanner.nextLine();
+        pas = scanner.nextLine();
+        System.out.println("Enter your First name");
         String fName = scanner.nextLine();
         account.setFirstName(fName);
         System.out.println("Enter your Last name");

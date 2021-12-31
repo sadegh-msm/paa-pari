@@ -69,22 +69,11 @@ public class ClientHandler extends Thread {
                 switch (received) {
                     //client choice
                     case "1":
-                        System.out.println("Please Enter your username and password");
-                        String us, pas;
-
-                        us = scanner.nextLine();
-                        pas = scanner.nextLine();
-                        menu.signIn(us, pas);
-                        scanner.close();
+                        menu.signIn();
 
                     case "2":
-                        System.out.println("PLease enter your username and password");
-                        String username;
-                        String pass;
-                        username = scanner.nextLine();
-                        pass = scanner.nextLine();
-                        menu.signUp(username, pass);
-                        scanner.close();
+                        menu.signUp();
+
                     case "3":
                         menu.tweet();
 
