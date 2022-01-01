@@ -1,7 +1,6 @@
 package src.main.java;
 
 
-
 import java.time.LocalDate;
 import java.util.AbstractCollection;
 import java.util.ArrayList;
@@ -9,11 +8,12 @@ import java.util.ArrayList;
 /**
  * The type Pari.
  */
-public class Pari extends PariService{
+public class Pari extends PariService {
     private int likes;
     private int retweetCount;
     private String content;
     private LocalDate localDate;
+    private Account user;
     /**
      * The Contents.
      */
@@ -23,6 +23,7 @@ public class Pari extends PariService{
      * Instantiates a new Pari.
      */
     public Pari() {
+        user = new Account();
         contents = new ArrayList<>();
     }
 
@@ -69,6 +70,7 @@ public class Pari extends PariService{
 
     /**
      * All contents array list.
+     *
      * @return the array list
      */
     public ArrayList<Pari> getContents() {
@@ -127,5 +129,14 @@ public class Pari extends PariService{
      */
     public void setRetweetCount(int retweetCount) {
         this.retweetCount = retweetCount;
+    }
+
+    /**
+     * Author string.
+     *
+     * @return the user's name
+     */
+    public String Author() {
+        return user.getUsername();
     }
 }
