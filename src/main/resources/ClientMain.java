@@ -1,6 +1,5 @@
-package src.main.java;
+package src.main.resources;
 
-import src.main.resources.ClientApplication;
 
 public class ClientMain {
 

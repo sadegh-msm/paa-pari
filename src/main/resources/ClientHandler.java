@@ -1,10 +1,10 @@
 package src.main.resources;
 
 import src.main.java.*;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.Socket;
+import java.util.Scanner;
 
 
 /**
@@ -51,6 +51,7 @@ public class ClientHandler extends Thread {
                         "7. follow or unfollow\n" +
                         "8. reply\n" +
                         "type exit to close the app\n");
+                output.flush();
                 // receive the answer from client
                 received = input.readUTF();
                 if (received.equals("exit")) {
@@ -62,34 +63,134 @@ public class ClientHandler extends Thread {
                 }
                 // write on output stream based on the
                 // answer from the client
-                System.out.println("What do you want to do");
                 System.out.println(received);
                 switch (received) {
-                    //client choice
+                    //sign in
                     case "1":
-                        menu.signIn();
+                        output.writeUTF("PLease enter your username and password");
+                        output.flush();
+                        String username;
+                        String pass;
+                        username = input.readUTF();
+                        pass = input.readUTF();
+                        output.writeUTF("Login in.......");
+                        output.flush();
+                        if (menu.readFromFile(username, pass)) {
+                            output.writeUTF("Logged in successfully");
+                            output.flush();
+                            timeline.displayPari(account);
+                        } else {
+                            output.writeUTF("your username and password is wrong");
+                            output.flush();
+                            menu.signIn();
+                        }
+                    //sign up
 
                     case "2":
-                        menu.signUp();
+                        output.writeUTF("Please Enter your username and password");
+                        output.flush();
+                        String us, pas;
 
+                        us = input.readUTF();
+                        pas = input.readUTF();
+                        output.writeUTF(us);
+                        output.writeUTF(pas);
+                        output.writeUTF("\n");
+                        output.flush();
+                        output.writeUTF("Enter your First name");
+                        output.flush();
+                        String fName = input.readUTF();
+                        account.setFirstName(fName);
+                        output.writeUTF("Enter your Last name");
+                        output.flush();
+                        String lName = input.readUTF();
+                        account.setLastName(lName);
+                        output.writeUTF("Write your biography (256 character)");
+                        output.flush();
+
+                        String bio;
+                        bio = input.readUTF();
+                        while (!account.setBiography(bio)) {
+                            output.writeUTF("Enter again");
+                            output.flush();
+                            bio = input.readUTF();
+                        }
+
+                        output.writeUTF("Enter your date of birth");
+                        output.flush();
+                        String date;
+                        date = input.readUTF();
+                        account.setDateOfBirth(date);
+                        account.setDateOfJoin();
+                        menu.writeToFile();
+
+                    //tweet
                     case "3":
-                        menu.tweet();
+                        output.writeUTF("1.Please write your tweet\n2.Remove your tweet");
+                        output.flush();
 
+                        String choice = input.readUTF();
+                        switch (choice) {
+                            case "1":
+                                pari.writePari("E:\\GitHub\\paa-pari\\files\\model\\paries\\Paries.txt");
+
+                            case "2":
+                                output.writeUTF("please enter the index of pari you want to delete");
+                                output.flush();
+                                int index = input.readInt();
+                                pari.removePari("E:\\GitHub\\paa-pari\\files\\model\\paries\\Paries.txt", index);
+                        }
+                    //like
                     case "4":
-                        menu.likePari();
+                        output.writeUTF("please enter the pari you want to like");
+                        output.flush();
+                        int index = input.readInt();
 
+                        pariService.like(index);
+
+                    //retweet
                     case "5":
-                        menu.reTweetPari();
+                        output.writeUTF("please enter the tweet you want to retweet");
+                        output.flush();
+                        int index1 = input.readInt();
 
+                        pariService.retweet("E:\\GitHub\\paa-pari\\files\\model\\users\\UsersInfo.txt", pari.getContent());
+                        int retweetCount = 0;
+                        retweetCount++;
+                        pari.setRetweetCount(retweetCount);
+
+                    //timeline
                     case "6":
-                        menu.timeLine();
+                        for (int i = 0; i < os.getFollowedUsers().size(); i++) {
+                            timeline.displayPari(os.getFollowedUsers().get(i));
+                        }
 
+                    //observer
                     case "7":
-                        menu.Observe();
+                        output.writeUTF("1.Followers list\n2.Follow\n3.Unfollow");
+                        output.flush();
+                        int choice1;
 
+                        choice1 = input.readInt();
+                        switch (choice1) {
+                            case 1:
+                                for (int i = 0; i < os.getFollowedUsers().size(); i++) {
+                                    System.out.println(os.getFollowedUsers().get(i));
+                                }
+
+                            case 2:
+                                os.follow(account);
+
+                            case 3:
+                                os.unfollow(account);
+                        }
+
+                        //reply
                     case "8":
-                        menu.reply();
+                        rs.replyOnPari(pari);
+                        rs.printReplied();
 
+                    //again
                     default:
                         System.exit(0);
                 }

@@ -1,7 +1,5 @@
-package src.main.resources;
+package src.main.java;
 
-
-import src.main.java.*;
 
 import java.io.*;
 import java.util.Scanner;
@@ -115,8 +113,10 @@ public class Menu {
                 for (int i = 0; i < os.getFollowedUsers().size(); i++) {
                     System.out.println(os.getFollowedUsers().get(i));
                 }
+
             case 2:
                 os.follow(account);
+
             case 3:
                 os.unfollow(account);
         }
@@ -133,6 +133,7 @@ public class Menu {
         switch (choice) {
             case 1:
                 pari.writePari("E:\\GitHub\\paa-pari\\files\\model\\paries\\Paries.txt");
+
             case 2:
                 System.out.println("please enter the index of pari you want to delete");
                 int index = scanner.nextInt();
@@ -223,6 +224,4 @@ public class Menu {
         }
         return true;
     }
-
-
 }

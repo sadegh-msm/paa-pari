@@ -1,7 +1,4 @@
-package src.main.java;
-
-import src.main.resources.ClientApplication;
-import src.main.resources.ServerApplication;
+package src.main.resources;
 
 import java.io.IOException;
 
