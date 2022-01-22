@@ -31,8 +31,8 @@ public class ClientHandler extends Thread {
      */
     public ClientHandler(Socket socket, DataInputStream input, DataOutputStream output) {
         this.socket = socket;
-        this.input = input;
         this.output = output;
+        this.input = input;
         this.menu = new Menu(pari, account, pariService, timeline, os, rs);
     }
 
