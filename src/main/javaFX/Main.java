@@ -7,18 +7,23 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class Main extends Application {
 
-    Image e = new Image("twitter.png");
+    File file = new File("unnamed.png");
+
+    Image e = new Image(Paths.get(file.getAbsolutePath()).toUri().toString());
+
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
         primaryStage.setTitle("Twitter");
         primaryStage.getIcons().add(e);
-        primaryStage.setScene(new Scene(root, 1280, 720));
+        primaryStage.setScene(new Scene(root, 612, 400));
         primaryStage.show();
     }
 

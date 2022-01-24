@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +22,18 @@ public class SignUpController {
     public Button back;
     @FXML
     public Button next;
-
+    @FXML
+    public TextField firstName;
+    @FXML
+    public TextField lastName;
+    @FXML
+    public TextField username;
+    @FXML
+    public TextField password;
+    @FXML
+    public TextField DateOfBirth;
+    @FXML
+    public  TextField biography;
     @FXML
     public void BackToFirstPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
@@ -39,4 +51,5 @@ public class SignUpController {
         stage.setScene(scene);
         stage.show();
     }
+
 }
