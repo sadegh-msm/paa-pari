@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.javaFX.SignUpController">
    <children>
       <ImageView fitHeight="432.0" fitWidth="573.0" layoutX="76.0" pickOnBounds="true" preserveRatio="true">
@@ -21,12 +20,12 @@
       <TextField layoutX="112.0" layoutY="216.0" />
       <TextField layoutX="113.0" layoutY="268.0" />
       <TextField layoutX="113.0" layoutY="328.0" />
-      <TextField layoutX="334.0" layoutY="39.0" />
-      <TextField layoutX="335.0" layoutY="98.0" />
-      <TextField layoutX="336.0" layoutY="154.0" />
-      <TextField layoutX="337.0" layoutY="216.0" />
-      <TextField layoutX="338.0" layoutY="268.0" />
-      <TextField layoutX="335.0" layoutY="328.0" />
+      <TextField fx:id="firstName" layoutX="334.0" layoutY="39.0" onAction="#setFirstName" />
+      <TextField fx:id="lastName" layoutX="335.0" layoutY="98.0" onAction="#setLastName" />
+      <TextField fx:id="username" layoutX="336.0" layoutY="154.0" onAction="#setUserName" />
+      <TextField fx:id="password" layoutX="337.0" layoutY="216.0" onAction="#setPassword" />
+      <TextField fx:id="DateOfBirth" layoutX="338.0" layoutY="268.0" onAction="#setDateOfBirth" />
+      <TextField fx:id="biography" layoutX="335.0" layoutY="328.0" onAction="#setBiography" />
       <Label layoutX="161.0" layoutY="43.0" text="FIrstname" />
       <Label layoutX="161.0" layoutY="102.0" text="Lastname" />
       <Label layoutX="162.0" layoutY="158.0" text="username" />

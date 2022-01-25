@@ -10,7 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class SignUpController {
@@ -33,7 +35,8 @@ public class SignUpController {
     @FXML
     public TextField DateOfBirth;
     @FXML
-    public  TextField biography;
+    public TextField biography;
+
     @FXML
     public void BackToFirstPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
@@ -51,5 +54,37 @@ public class SignUpController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    public void setFirstName(ActionEvent actionEvent) {
+        String fName = firstName.getText();
+    }
+
+    @FXML
+    public void setLastName(ActionEvent actionEvent) {
+        String lName = lastName.getText();
+    }
+
+    @FXML
+    public void setUserName(ActionEvent actionEvent) {
+        String uName = username.getText();
+    }
+
+    @FXML
+    public void setPassword(ActionEvent actionEvent) {
+        String pass = password.getText();
+    }
+
+    @FXML
+    public void setDateOfBirth(ActionEvent actionEvent) {
+        LocalDate dateOfBirth = LocalDate.parse(DateOfBirth.getText());
+    }
+
+    @FXML
+    public void setBiography(ActionEvent actionEvent) {
+          String bio = biography.getText();
+
+    }
+
 
 }
