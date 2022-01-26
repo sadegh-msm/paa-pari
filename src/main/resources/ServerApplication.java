@@ -28,33 +28,13 @@ public class ServerApplication {
                 System.out.println("A new client is connected : " + socket);
 
                 // obtaining input and out streams
-                DataOutputStream output = new DataOutputStream(socket.getOutputStream());
                 DataInputStream input = new DataInputStream(socket.getInputStream());
-
+                DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 
                 System.out.println("Assigning new thread for this client");
 
-                Thread t1 = new ClientHandler(socket, input, output);
-                //Thread t2 = new ClientHandler(socket, output);
-                t1.start();
-                //t2.start();
-//                class Reader extends Thread{
-//                    @Override
-//                    public void run(){
-//                        while (true){
-//
-//                        }
-//                    }
-//                }
-//
-//                class Writer extends Thread{
-//                    @Override
-//                    public void run(){
-//                        while (true){
-//
-//                        }
-//                    }
-//                }
+                Thread t = new ClientHandler(socket, input, output);
+                t.start();
             } catch (Exception e){
                 socket.close();
                 e.printStackTrace();
