@@ -1,5 +1,6 @@
 package src.main.resources;
 
+import org.json.JSONObject;
 import src.main.java.*;
 
 import java.io.*;
@@ -16,11 +17,13 @@ public class ClientHandler extends Thread {
     private Socket socket;
     private Menu menu;
     private Pari pari;
-    private Account account = new Account();
-    private PariService pariService = new PariService();
-    private TimelineSystemImpl timeline = new TimelineSystemImpl();
-    private ObserverSystemImpl os = new ObserverSystemImpl();
-    private ReplyingSystemImpl rs = new ReplyingSystemImpl();
+    private Account account ;
+    private PariService pariService;
+    private TimelineSystemImpl timeline;
+    private ObserverSystemImpl os;
+    private ReplyingSystemImpl rs;
+    private ChatClient chatClient;
+    private ChatServer chatServer;
 
     /**
      * Instantiates a new Client handler.
@@ -31,8 +34,13 @@ public class ClientHandler extends Thread {
      */
     public ClientHandler(Socket socket, DataInputStream input, DataOutputStream output) {
         this.socket = socket;
-        this.input = input;
         this.output = output;
+        this.input = input;
+        this.rs = new ReplyingSystemImpl();
+        this.os = new ObserverSystemImpl();
+        this.timeline = new TimelineSystemImpl();
+        this.pariService = new PariService();
+        this.account = new Account();
         this.menu = new Menu(pari, account, pariService, timeline, os, rs);
     }
 
@@ -41,7 +49,7 @@ public class ClientHandler extends Thread {
         while (true) {
             try {
                 // Ask user what he wants
-                output.writeUTF("what do you want to do?\n" +
+                 output.writeUTF("what do you want to do?\n" +
                         "1. sign in\n" +
                         "2. sign up\n" +
                         "3. tweets\n" +
@@ -50,7 +58,10 @@ public class ClientHandler extends Thread {
                         "6. timeline\n" +
                         "7. follow or unfollow\n" +
                         "8. reply\n" +
-                        "type exit to close the app\n");
+                        "9. start server for chat\n" +
+                        "10. start chat\n" +
+                        "type exit to close the app\n" );
+//                JSONObject json = new JSONObject(out);
                 output.flush();
                 // receive the answer from client
                 received = input.readUTF();
@@ -189,6 +200,18 @@ public class ClientHandler extends Thread {
                     case "8":
                         rs.replyOnPari(pari);
                         rs.printReplied();
+
+                        // server for chat
+                    case "9":
+                        int portServer = input.readInt();
+                        chatServer = new ChatServer(portServer);
+                        chatServer.startChatServer();
+
+                        // client for chat
+                    case "10":
+                        int portClient = input.readInt();
+                        chatClient = new ChatClient("localhost", portClient);
+                        chatClient.startChatClient();
 
                     //again
                     default:

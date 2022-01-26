@@ -1,6 +1,7 @@
 package src.main.java;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.AbstractCollection;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 /**
  * The type Pari.
  */
-public class Pari extends PariService {
+public class Pari extends PariService implements Serializable {
     private int likes;
     private int retweetCount;
     private String content;
