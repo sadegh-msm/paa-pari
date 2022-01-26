@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3f82e0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.javaFX.Controller">
    <children>
       <ImageView fitHeight="331.0" fitWidth="433.0" layoutX="56.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
@@ -33,5 +32,6 @@
       <Label layoutX="707.0" layoutY="465.0" text="Sadegh Mohammadi" />
       <Label layoutX="700.0" layoutY="522.0" text="Sadegmsm@gmailc.om" />
       <Label layoutX="749.0" layoutY="581.0" text="9931051" />
+      <AnchorPane fx:id="anchorPane" layoutX="741.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

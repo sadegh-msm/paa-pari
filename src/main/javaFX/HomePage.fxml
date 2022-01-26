@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,5 +24,35 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #4287f5;" text="ChatRoom" textFill="WHITE" />
          </children>
       </VBox>
+      <AnchorPane fx:id="anchorPane" layoutX="386.0" layoutY="8.0" prefHeight="200.0" prefWidth="200.0" />
+      <MenuBar fx:id="menuBar" layoutX="84.0" layoutY="1.0" style="-fx-background-color: #4287f5;">
+        <menus>
+          <Menu fx:id="App" mnemonicParsing="false" text="Aplication">
+            <items>
+                  <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
+              <MenuItem fx:id="logout" mnemonicParsing="false" text="LogOut" />
+            </items>
+          </Menu>
+          <Menu fx:id="Help" mnemonicParsing="false" text="Help">
+            <items>
+                  <MenuItem fx:id="about" mnemonicParsing="false" onAction="#aboutListener" text="About" />
+              <MenuItem fx:id="help" mnemonicParsing="false" text="Help" />
+            </items>
+          </Menu>
+          <Menu fx:id="View" mnemonicParsing="false" text="View">
+            <items>
+              <MenuItem fx:id="fullScreen" mnemonicParsing="false" onAction="#fullScreen" text="ToggleFullScreen" />
+            </items>
+          </Menu>
+            <Menu fx:id="options" mnemonicParsing="false" text="Options">
+              <items>
+                  <MenuItem fx:id="quit" mnemonicParsing="false" onAction="#quitListener" text="Close" />
+                <MenuItem fx:id="systemTray" mnemonicParsing="false" text="SystemTray" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="back" layoutX="16.0" layoutY="393.0" mnemonicParsing="false" onAction="#BackToFirstPage" style="-fx-background-color: #4287f5;" text="Back" textFill="WHITE" />
+      <Button layoutX="534.0" layoutY="393.0" mnemonicParsing="false" style="-fx-background-color: #4287f5;" text="Next" textFill="WHITE" />
    </children>
 </AnchorPane>

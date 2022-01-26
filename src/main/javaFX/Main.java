@@ -24,6 +24,7 @@ public class Main extends Application {
         primaryStage.setTitle("Twitter");
         primaryStage.getIcons().add(e);
         primaryStage.setScene(new Scene(root, 612, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
