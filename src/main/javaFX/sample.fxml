@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,14 +12,71 @@
    <children>
       <ButtonBar layoutX="-15.0" layoutY="348.0" prefHeight="52.0" prefWidth="618.0">
         <buttons>
-            <Button fx:id="SignUp" mnemonicParsing="false" onAction="#setSignUp" prefHeight="26.0" prefWidth="513.0" style="-fx-background-color: #3f82e0;" text="SignUp" textFill="WHITE" />
-          <Button fx:id="SingIn" mnemonicParsing="false" onAction="#setSingIn" style="-fx-background-color: #3f82e0;" text="SignIn" textFill="WHITE" />
+          <Button fx:id="SingIn" mnemonicParsing="false" onAction="#setSingIn" style="-fx-background-color: #3f82e0;" stylesheets="@darktheme.css" text="SignIn" textFill="WHITE" />
+            <Button fx:id="SignUp" mnemonicParsing="false" onAction="#setSignUp" prefHeight="26.0" prefWidth="513.0" style="-fx-background-color: #3f82e0;" stylesheets="@darktheme.css" text="SignUp" textFill="WHITE" />
         </buttons>
       </ButtonBar>
-      <ImageView fitHeight="360.0" fitWidth="612.0" layoutX="-1.0" layoutY="-3.0">
+      <ImageView fitHeight="360.0" fitWidth="612.0">
          <image>
             <Image url="@../../unnamed.png.png" />
          </image>
       </ImageView>
+      <MenuButton layoutX="21.0" layoutY="14.0" mnemonicParsing="false" text="Help">
+        <items>
+          <MenuItem mnemonicParsing="false" text="About">
+               <graphic>
+                  <Button fx:id="about" mnemonicParsing="false" onAction="#About" text="About" />
+               </graphic>
+            </MenuItem>
+          <MenuItem mnemonicParsing="false" text="Help">
+               <graphic>
+                  <Button fx:id="help" mnemonicParsing="false" onAction="#Help" text="Help" />
+               </graphic>
+            </MenuItem>
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="87.0" layoutY="14.0" mnemonicParsing="false" text="Application">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Exit">
+               <graphic>
+                  <Button fx:id="close" mnemonicParsing="false" onAction="#closeButtonHandler" text="Exit" />
+               </graphic>
+            </MenuItem>
+          <MenuItem mnemonicParsing="false" text="Log Out">
+               <graphic>
+                  <Button fx:id="logOut" mnemonicParsing="false" onAction="#logOutButtonHandler" text="Log Out" />
+               </graphic>
+            </MenuItem>
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="188.0" layoutY="14.0" mnemonicParsing="false" text="View">
+         <items>
+          <MenuItem mnemonicParsing="false" text="ToggleFullScreen">
+               <graphic>
+                  <Button mnemonicParsing="false" text="ToggleFullScreen" />
+               </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Theme">
+               <graphic>
+                  <Button mnemonicParsing="false" text="Theme" />
+               </graphic>
+            </MenuItem>
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="257.0" layoutY="14.0" mnemonicParsing="false" text="Options">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Exit">
+               <graphic>
+                  <Button mnemonicParsing="false" text="Exit" />
+               </graphic>
+            </MenuItem>
+          <MenuItem mnemonicParsing="false" text="SystemTray">
+               <graphic>
+                  <Button mnemonicParsing="false" text="SystemTray" />
+               </graphic>
+            </MenuItem>
+        </items>
+      </MenuButton>
+      <AnchorPane fx:id="anchorPane" layoutX="398.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

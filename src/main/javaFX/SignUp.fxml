@@ -34,5 +34,6 @@
       <Label layoutX="160.0" layoutY="332.0" text="Biography" />
       <Button fx:id="back" layoutX="14.0" layoutY="385.0" mnemonicParsing="false" onAction="#BackToFirstPage" style="-fx-background-color: #4287f5;" text="Back" textFill="WHITE" />
       <Button fx:id="next" layoutX="534.0" layoutY="385.0" mnemonicParsing="false" onAction="#nextPage" style="-fx-background-color: #4287f5;" text="Next" textFill="WHITE" />
+      <AnchorPane fx:id="anchorPane" layoutX="507.0" layoutY="-2.0" prefHeight="200.0" prefWidth="135.0" />
    </children>
 </AnchorPane>

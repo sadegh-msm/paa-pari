@@ -1,21 +1,26 @@
 package src.main.javaFX;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class SignUpController {
+public class SignUpController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -36,6 +41,8 @@ public class SignUpController {
     public TextField DateOfBirth;
     @FXML
     public TextField biography;
+    @FXML
+    public AnchorPane anchorPane;
 
     @FXML
     public void BackToFirstPage(ActionEvent event) throws IOException {
@@ -82,8 +89,22 @@ public class SignUpController {
 
     @FXML
     public void setBiography(ActionEvent actionEvent) {
-          String bio = biography.getText();
+        String bio = biography.getText();
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ToggleSwitch button = new ToggleSwitch();
+        SimpleBooleanProperty isOn = button.switchOnProperty();
+        isOn.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                button.getScene().getRoot().getStylesheets().add(Objects.requireNonNull(getClass().getResource("darktheme.css")).toString());
+            } else {
+                button.getScene().getRoot().getStylesheets().remove(Objects.requireNonNull(getClass().getResource("darktheme.css")).toString());
+            }
+
+        });
+        anchorPane.getChildren().add(button);
     }
 
 

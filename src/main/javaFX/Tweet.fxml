@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.javaFX.HomePageController">
+    <ImageView fitHeight="442.0" fitWidth="400.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../unnamed.png.png" />
+    </ImageView>
+    <TextArea layoutX="100.0" layoutY="145.0" prefHeight="131.0" prefWidth="400.0" />
+    <Button layoutX="448.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Send" textFill="#4287f5" />
+    <Button layoutX="100.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Back" textFill="#4287f5" />
+    <Label layoutX="103.0" layoutY="115.0" prefHeight="18.0" prefWidth="130.0" style="-fx-background-color: #ffffff;" text="Write your tweet below" textFill="#4287f5" />
+</AnchorPane>

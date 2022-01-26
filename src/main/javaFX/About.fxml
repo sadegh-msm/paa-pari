@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3f82e0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.javaFX.Controller">
+   <children>
+      <ImageView fitHeight="331.0" fitWidth="433.0" layoutX="56.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../photo_2021-10-24_18-07-01.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="316.0" fitWidth="291.0" layoutX="68.0" layoutY="21.0" rotate="90.0">
+         <image>
+            <Image url="@../../20190711_201938.jpg" />
+         </image>
+      </ImageView>
+      <TextArea layoutX="612.0" layoutY="79.0" prefHeight="200.0" prefWidth="234.0" />
+      <TextArea layoutX="617.0" layoutY="431.0" prefHeight="200.0" prefWidth="224.0" />
+      <Label layoutX="623.0" layoutY="170.0" text="E-mail" />
+      <Label layoutX="624.0" layoutY="223.0" text="Student Number" />
+      <Label layoutX="623.0" layoutY="522.0" text="E-mail" />
+      <Label layoutX="623.0" layoutY="581.0" text="Student Number" />
+      <Label layoutX="624.0" layoutY="117.0" text="Name" />
+      <Label layoutX="626.0" layoutY="465.0" text="Name" />
+      <Label layoutX="713.0" layoutY="117.0" text="Moein Ahmadieh" />
+      <Label layoutX="676.0" layoutY="170.0" prefHeight="18.0" prefWidth="173.0" text="moeinahmadiehlol@gmail.com" />
+      <Label layoutX="749.0" layoutY="223.0" text="9931001" />
+      <Label layoutX="707.0" layoutY="465.0" text="Sadegh Mohammadi" />
+      <Label layoutX="700.0" layoutY="522.0" text="Sadegmsm@gmailc.om" />
+      <Label layoutX="749.0" layoutY="581.0" text="9931051" />
+   </children>
+</AnchorPane>
