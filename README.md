@@ -14,8 +14,3 @@ This project is a simple copy of "Twitter" social media and it have most of the 
 
 this part is very simple you have to just create an account(with a uniqe username) and start using it. you can see following user and their pari in the time line and other thing that you can do with twitter.
 
-### signature
-
-<p align="center">
-  <img src="https://github.com/sadegh-msm/paa-pari/blob/main/images/signature/CHAD.jpg"/>
-</p>
